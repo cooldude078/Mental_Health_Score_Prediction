@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rhythm — Student Mental Health Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#predict-form">Skip to prediction form</a>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="#home" class="navbar__brand">
+        <span class="navbar__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="24" height="24">
+            <path d="M2 18 Q7 8, 11 18 T20 18 T29 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Rhythm
+      </a>
+
+      <nav class="navbar__nav" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#predict-form">Prediction</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <a href="#predict-form" class="btn btn--ghost navbar__cta">Get Prediction</a>
+
+      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#home">Home</a>
+      <a href="#predict-form">Prediction</a>
+      <a href="#about">About</a>
+      <a href="#predict-form" class="btn btn--ghost">Get Prediction</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">Applied ML · Student wellbeing</p>
+          <h1 class="hero__title">Student Mental Health Predictor</h1>
+          <p class="hero__subtitle">
+            Understand how lifestyle, academic habits and social media usage may influence your predicted mental health score.
+          </p>
+          <div class="hero__actions">
+            <a href="#predict-form" class="btn btn--primary" id="checkScoreBtn">Check My Score</a>
+            <a href="#about" class="btn btn--text">How it works →</a>
+          </div>
+
+          <dl class="hero__stats">
+            <div>
+              <dt>Signal</dt>
+              <dd>12 lifestyle &amp; usage inputs</dd>
+            </div>
+            <div>
+              <dt>Output</dt>
+              <dd>0–10 wellbeing score</dd>
+            </div>
+            <div>
+              <dt>Model</dt>
+              <dd>FastAPI inference API</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <svg class="pulse" viewBox="0 0 480 260" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="pulseGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#7FD9B9"/>
+                <stop offset="55%" stop-color="#8AA8F0"/>
+                <stop offset="100%" stop-color="#F2A65A"/>
+              </linearGradient>
+            </defs>
+            <path class="pulse__grid" d="M0 60 H480 M0 130 H480 M0 200 H480" />
+            <path class="pulse__line" d="M0 150 C 40 150, 55 60, 80 60 C 100 60, 110 210, 130 210 C 150 210, 160 40, 185 40 C 205 40, 215 150, 250 150 C 300 150, 320 90, 350 90 C 380 90, 390 170, 420 170 C 445 170, 455 130, 480 130" />
+            <circle class="pulse__dot" r="5">
+              <animateMotion dur="6s" repeatCount="indefinite"
+                path="M0 150 C 40 150, 55 60, 80 60 C 100 60, 110 210, 130 210 C 150 210, 160 40, 185 40 C 205 40, 215 150, 250 150 C 300 150, 320 90, 350 90 C 380 90, 390 170, 420 170 C 445 170, 455 130, 480 130" />
+            </circle>
+          </svg>
+          <p class="hero__visual-caption">Live rhythm of the signals your model reads — sleep, study, scrolling.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="about" id="about">
+      <div class="about__inner">
+        <div class="about__step">
+          <span class="about__num">01</span>
+          <h3>You share your week</h3>
+          <p>Age, academic level, sleep, study time, activity and social platform habits — the inputs the model was trained on.</p>
+        </div>
+        <div class="about__step">
+          <span class="about__num">02</span>
+          <h3>The model listens</h3>
+          <p>A trained regression model, served from a FastAPI backend, converts those signals into a single wellbeing estimate.</p>
+        </div>
+        <div class="about__step">
+          <span class="about__num">03</span>
+          <h3>You get a reading</h3>
+          <p>A score from 0–10 with a plain-language interpretation — a starting point for reflection, not a diagnosis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PREDICTION FORM ================= -->
+    <section class="predict" id="predict-form">
+      <div class="predict__inner">
+        <div class="predict__intro">
+          <p class="eyebrow">Prediction</p>
+          <h2>Tell us about your week</h2>
+          <p class="predict__lede">All fields are used only to generate your prediction locally in this session.</p>
+        </div>
+
+        <form class="card form-card" id="predictionForm" novalidate>
+          <div id="formError" class="form-error" role="alert" hidden></div>
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="age">Age</label>
+              <input type="number" id="age" name="age" min="0" max="100" step="1" placeholder="e.g. 21" required />
+            </div>
+
+            <div class="field">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender" required>
+                <option value="" disabled selected>Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="country">Country</label>
+              <select id="country" name="country" required>
+                <option value="" disabled selected>Select country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+                <option value="UK">UK</option>
+                <option value="Germany">Germany</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Turkey">Turkey</option>
+                <option value="France">France</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="academicLevel">Academic level</label>
+              <select id="academicLevel" name="academicLevel" required>
+                <option value="" disabled selected>Select level</option>
+                <option value="High School">High School</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Graduate">Graduate</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="platform">Most used platform</label>
+              <select id="platform" name="platform" required>
+                <option value="" disabled selected>Select platform</option>
+                <option value="Facebook">Facebook</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Snapchat">Snapchat</option>
+                <option value="Twitter">Twitter</option>
+                <option value="YouTube">YouTube</option>
+                <option value="TikTok">TikTok</option>
+                <option value="LINE">LINE</option>
+                <option value="KakaoTalk">KakaoTalk</option>
+                <option value="VKontakte">VKontakte</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="WeChat">WeChat</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="purpose">Purpose of use</label>
+              <select id="purpose" name="purpose" required>
+                <option value="" disabled selected>Select purpose</option>
+                <option value="Networking">Networking</option>
+                <option value="Education">Education</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="News">News</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="usageHours">Average daily usage (hours)</label>
+              <input type="number" id="usageHours" name="usageHours" min="0" max="24" step="0.1" placeholder="e.g. 5.5" required />
+            </div>
+
+            <div class="field">
+              <label for="dailyUnlocks">Daily phone unlocks</label>
+              <input type="number" id="dailyUnlocks" name="dailyUnlocks" min="0" step="1" placeholder="e.g. 40" required />
+            </div>
+
+            <div class="field">
+              <label for="studyHours">Study hours per day</label>
+              <input type="number" id="studyHours" name="studyHours" min="0" max="24" step="0.1" placeholder="e.g. 4" required />
+            </div>
+
+            <div class="field">
+              <label for="activityHours">Physical activity (hours)</label>
+              <input type="number" id="activityHours" name="activityHours" min="0" max="24" step="0.1" placeholder="e.g. 1" required />
+            </div>
+
+            <div class="field">
+              <label for="sleepHours">Sleep per night (hours)</label>
+              <input type="number" id="sleepHours" name="sleepHours" min="0" max="24" step="0.1" placeholder="e.g. 7" required />
+            </div>
+
+            <div class="field">
+              <label for="stressLevel">Stress level</label>
+              <select id="stressLevel" name="stressLevel" required>
+                <option value="" disabled selected>Select stress level</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Very High">Very High</option>
+              </select>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--submit" id="submitBtn">
+            <span class="btn__label">Predict Mental Health Score</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <!-- ================= RESULT ================= -->
+        <section class="card result-card" id="resultCard" hidden aria-live="polite">
+          <div class="result-card__gauge">
+            <div class="gauge" id="gauge" style="--gauge-pct: 0;">
+              <div class="gauge__inner">
+                <span class="gauge__value" id="scoreValue">0.00</span>
+                <span class="gauge__max">/ 10</span>
+              </div>
+            </div>
+          </div>
+          <div class="result-card__copy">
+            <p class="eyebrow">Your predicted mental health score</p>
+            <h3 id="scoreCategory">—</h3>
+            <p id="scoreExplainer" class="result-card__explainer"></p>
+            <p class="disclaimer">⚠ This prediction is generated by a machine learning model and is not a medical diagnosis.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Rhythm — a portfolio ML project. Predictions are estimates, not medical advice.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
