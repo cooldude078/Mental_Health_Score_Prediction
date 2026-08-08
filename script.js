@@ -1,7 +1,7 @@
 // =========================================================
 // CONFIG
 // =========================================================
-const API_URL = "http://127.0.0.1:8000/predict";
+const API_URL = "https://mental-health-score-prediction-zqne.onrender.com/predict";
 
 // Easy-to-edit score interpretation ranges.
 // Adjust these if your model's actual output range differs.
